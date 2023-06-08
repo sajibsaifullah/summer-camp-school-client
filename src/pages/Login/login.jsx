@@ -10,13 +10,13 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const [showPassword, setShowPassword] = useState(false);
-
-  const onSubmit = (data) => console.log(data);
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const onSubmit = (data) => console.log(data);
 
   return (
     <div className="flex justify-center items-center min-h-screen my-4">
@@ -62,7 +62,6 @@ const Login = () => {
                   placeholder="*******"
                   className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900 pr-10"
                 />
-
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
