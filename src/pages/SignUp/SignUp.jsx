@@ -1,14 +1,27 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const SignUp = () => {
+  const [passwordMatch, setPasswordMatch] = useState(true);
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
+
+  const onSubmit = (data) => {
+    if (password === confirmPassword) {
+      console.log(data);
+    } else {
+      setPasswordMatch(false);
+    }
+  };
   return (
     <div className="flex justify-center items-center min-h-screen my-4">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -101,13 +114,18 @@ const SignUp = () => {
               </label>
               <input
                 type="password"
-                {...register("ConfirmPassword", { required: true })}
+                {...register("confirmPassword", { required: true })}
                 placeholder="Confirm Your password Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
-              {errors.ConfirmPassword?.type === "required" && (
+              {errors.confirmPassword?.type === "required" && (
                 <p className="text-red-600">Please confirm your password</p>
+              )}
+              {!passwordMatch && (
+                <p className="text-red-600">
+                  Password and confirm password do not match
+                </p>
               )}
             </div>
           </div>
@@ -115,6 +133,7 @@ const SignUp = () => {
           <div>
             <button
               type="submit"
+              disabled={!passwordMatch}
               className="bg-rose-500 w-full rounded-md py-3 text-white"
             >
               Continue
