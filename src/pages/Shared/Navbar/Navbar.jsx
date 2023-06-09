@@ -54,10 +54,10 @@ const Navbar = () => {
             {navOptions}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-3xl font-bold">
-          <img src={logo} alt="" className="w-12" />
+        <Link to='/' className="btn btn-ghost normal-case text-xl md:text-3xl font-bold px-2">
+          <img src={logo} alt="" className="w-8 md:w-12 " />
           SPORTIQUE
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navOptions}</ul>
@@ -69,7 +69,7 @@ const Navbar = () => {
               src={user?.photoURL}
               alt="https://img.freepik.com/free-icon/user_318-159711.jpg"
               title={user?.displayName}
-              className="w-10 h-10 rounded-full mr-2"
+              className="w-8 h-8 rounded-full mr-2"
             />
 
             <button
