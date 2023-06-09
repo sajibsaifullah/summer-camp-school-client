@@ -1,12 +1,29 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProviders/AuthProviders";
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   const navOptions = (
     <>
-      <li><Link to='/'>Home</Link></li>
-      <li><Link to='/'>Instructors</Link></li>
-      <li><Link to='/'>Classes</Link></li>
-      <li><Link to='/'>Dashboard</Link></li>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/">Instructors</Link>
+      </li>
+      <li>
+        <Link to="/">Classes</Link>
+      </li>
+      <li>
+        <Link to="/">Dashboard</Link>
+      </li>
     </>
   );
 
@@ -38,7 +55,7 @@ const Navbar = () => {
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-3xl font-bold">
-          <img src={logo} alt="" className="w-12"/>
+          <img src={logo} alt="" className="w-12" />
           SPORTIQUE
         </a>
       </div>
@@ -46,7 +63,32 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navOptions}</ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn btn-sm btn-neutral bg-rose-500 text-white" to='/login'>Login</Link>
+        {user ? (
+          <>
+            <img
+              src={user?.photoURL}
+              alt="https://img.freepik.com/free-icon/user_318-159711.jpg"
+              title={user?.displayName}
+              className="w-10 h-10 rounded-full mr-2"
+            />
+
+            <button
+              onClick={handleLogOut}
+              className="btn btn-sm btn-neutral bg-rose-500 text-white"
+            >
+              Log out
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              className="btn btn-sm btn-neutral bg-rose-500 text-white"
+              to="/login"
+            >
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

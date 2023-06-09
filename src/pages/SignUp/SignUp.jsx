@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const [passwordMatch, setPasswordMatch] = useState(true);
@@ -12,12 +14,35 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
+  const {createUser, updateUserProfile} = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const password = watch("password");
   const confirmPassword = watch("confirmPassword");
 
   const onSubmit = (data) => {
     if (password === confirmPassword) {
-      console.log(data);
+      console.log(data.name, data.photoURL);
+
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          console.log("user profile info updated");
+          // reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "SignUp successful.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
+    });
     } else {
       setPasswordMatch(false);
     }
