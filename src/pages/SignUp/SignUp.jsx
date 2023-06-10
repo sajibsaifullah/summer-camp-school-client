@@ -34,6 +34,7 @@ const SignUp = () => {
             const saveUser = {
               name: data.name,
               email: data.email,
+              image: data.photoURL
             };
 
             fetch("http://localhost:5000/users", {
@@ -46,7 +47,6 @@ const SignUp = () => {
               .then((res) => res.json())
               .then((data) => {
                 if (data.insertedId) {
-                  // reset();
                   Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -55,6 +55,7 @@ const SignUp = () => {
                     timer: 1500,
                   });
                   navigate("/");
+                  location.reload();
                 }
               });
           })

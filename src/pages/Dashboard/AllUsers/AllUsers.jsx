@@ -83,8 +83,8 @@ const AllUsers = () => {
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Role</th>
-              <th>Role</th>
+              <th>Admin Role</th>
+              <th>Instructor Role</th>
               <th>Action</th>
             </tr>
           </thead>
