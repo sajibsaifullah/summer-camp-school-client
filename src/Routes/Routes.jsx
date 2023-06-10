@@ -8,6 +8,7 @@ import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import Instructors from "../pages/Instructors/Instructors";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
 
 export const router = createBrowserRouter([
   {
@@ -44,7 +45,11 @@ export const router = createBrowserRouter([
       {
         path: 'allusers',
         element: <AllUsers></AllUsers>
-      }
+      },
+      {
+        path: 'addclass',
+        element: <AddClass></AddClass>
+      },
     ]
   },
 ]);

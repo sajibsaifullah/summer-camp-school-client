@@ -30,7 +30,6 @@ const AllUsers = () => {
     .then(data => {
       console.log(data);
       if(data.modifiedCount){
-        location.reload();
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -38,6 +37,7 @@ const AllUsers = () => {
           showConfirmButton: false,
           timer: 1500
         })
+        location.reload();
       }
     })
   }
@@ -60,7 +60,6 @@ const AllUsers = () => {
     .then(data => {
       console.log(data);
       if(data.modifiedCount){
-        location.reload();
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -68,6 +67,7 @@ const AllUsers = () => {
           showConfirmButton: false,
           timer: 1500
         })
+        location.reload();
       }
     })
   }

@@ -3,23 +3,23 @@ import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../pages/Shared/Navbar/Navbar";
 
 const Dashboard = () => {
-//   const [users, setUsers] = useState([]);
-//   const [isAdmin, setIsAdmin] = useState(true);
-    const isAdmin = true;
+  //   const [users, setUsers] = useState([]);
+  //   const [isAdmin, setIsAdmin] = useState(true);
+  const isAdmin = true;
   // const [isAdmin] = useAdmin();
-//   useEffect(() => {
-//     fetch("http://localhost:5000/users")
-//       .then((res) => res.json())
-//       .then((data) => {
-//         // setUsers(data);
-//         const A = data.find((d) => d?.role === "admin");
-//         if (A?.role === "admin") {
-//           setIsAdmin();
-//         }else{
-//             setIsAdmin(false)
-//         }
-//       });
-//   }, []);
+  //   useEffect(() => {
+  //     fetch("http://localhost:5000/users")
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         // setUsers(data);
+  //         const A = data.find((d) => d?.role === "admin");
+  //         if (A?.role === "admin") {
+  //           setIsAdmin();
+  //         }else{
+  //             setIsAdmin(false)
+  //         }
+  //       });
+  //   }, []);
 
   return (
     <>
@@ -41,9 +41,14 @@ const Dashboard = () => {
           <ul className="menu p-4 w-80">
             {/* Sidebar content here */}
             {isAdmin && (
-              <li>
-                <NavLink to="/dashboard/allusers">All Users</NavLink>
-              </li>
+              <>
+                <li>
+                  <NavLink to="/dashboard/allusers">All Users</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/addclass">Add Class</NavLink>
+                </li>
+              </>
             )}
           </ul>
         </div>
