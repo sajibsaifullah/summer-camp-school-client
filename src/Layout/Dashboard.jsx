@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 // import { useEffect, useState } from "react";
 import Navbar from "../pages/Shared/Navbar/Navbar";
+import Footer from "../pages/Shared/Footer/Footer";
 
 const Dashboard = () => {
   //   const [users, setUsers] = useState([]);
@@ -53,6 +54,7 @@ const Dashboard = () => {
           </ul>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

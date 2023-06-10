@@ -34,7 +34,7 @@ const SignUp = () => {
             const saveUser = {
               name: data.name,
               email: data.email,
-              image: data.photoURL
+              image: data.photoURL,
             };
 
             fetch("http://localhost:5000/users", {
