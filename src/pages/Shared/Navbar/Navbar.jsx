@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link to="/">Classes</Link>
       </li>
       {user && <li>
-        <Link to="/">Dashboard</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>}
     </>
   );
