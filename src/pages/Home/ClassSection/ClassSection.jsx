@@ -3,15 +3,13 @@ import { useEffect, useState } from "react";
 const ClassSection = () => {
   const [cls, setCls] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/classes")
+    fetch("https://summer-camp-school-server-orpin.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => setCls(data));
   }, []);
   return (
     <>
-      <h2 className="text-3xl font-bold text-center my-8 uppercase">
-        Classes
-      </h2>
+      <h2 className="text-3xl font-bold text-center my-8 uppercase">Classes</h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {cls.slice(0, 6).map((cl, i) => (
           <div key={i}>

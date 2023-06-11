@@ -6,7 +6,7 @@ const AddClass = () => {
   const onSubmit = (data) => {
     const inputClass = data;
     console.log(inputClass);
-    fetch("http://localhost:5000/classes", {
+    fetch("https://summer-camp-school-server-orpin.vercel.app/classes", {
       method: "POST",
       headers: {
         "content-type": "application/json",

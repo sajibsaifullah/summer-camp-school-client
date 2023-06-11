@@ -9,7 +9,7 @@ const Dashboard = () => {
   const isAdmin = true;
   // const [isAdmin] = useAdmin();
   //   useEffect(() => {
-  //     fetch("http://localhost:5000/users")
+  //     fetch("https://summer-camp-school-server-orpin.vercel.app/users")
   //       .then((res) => res.json())
   //       .then((data) => {
   //         // setUsers(data);

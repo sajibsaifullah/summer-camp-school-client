@@ -6,71 +6,76 @@ const AllUsers = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://summer-camp-school-server-orpin.vercel.app/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
 
-  
-  const handleMakeAdmin = user => {
+  const handleMakeAdmin = (user) => {
     if (user.role === "instructor") {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: `${user.name} is already an instructor`,
-          showConfirmButton: false,
-          timer: 1500
-        });
-        return;
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: `${user.name} is already an instructor`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
+    fetch(
+      `https://summer-camp-school-server-orpin.vercel.app/users/admin/${user._id}`,
+      {
+        method: "PATCH",
       }
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: 'PATCH'
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      if(data.modifiedCount){
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: `${user.name} is an Admin Now`,
-          showConfirmButton: false,
-          timer: 1500
-        })
-        location.reload();
-      }
-    })
-  }
-  const handleMakeInstructor = user => {
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Admin Now`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          location.reload();
+        }
+      });
+  };
+  const handleMakeInstructor = (user) => {
     if (user.role === "admin") {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: `${user.name} is already an admin`,
-          showConfirmButton: false,
-          timer: 1500
-        });
-        return;
-      }
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: `${user.name} is already an admin`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
 
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-      method: 'PATCH'
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      if(data.modifiedCount){
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: `${user.name} is an Instructor Now`,
-          showConfirmButton: false,
-          timer: 1500
-        })
-        location.reload();
+    fetch(
+      `https://summer-camp-school-server-orpin.vercel.app/users/instructor/${user._id}`,
+      {
+        method: "PATCH",
       }
-    })
-  }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Instructor Now`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          location.reload();
+        }
+      });
+  };
 
   return (
     <div>

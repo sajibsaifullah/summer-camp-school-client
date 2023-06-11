@@ -37,7 +37,7 @@ const SignUp = () => {
               image: data.photoURL,
             };
 
-            fetch("http://localhost:5000/users", {
+            fetch("https://summer-camp-school-server-orpin.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",
